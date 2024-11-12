@@ -192,14 +192,18 @@ import (
 // ----------------------------------------------------------------
 var store = sessions.NewCookieStore([]byte("secret-key"))
 
+// When the "Logout" button is clicked in the dashboard, the logout() JavaScript function is triggered.
+// This sends a POST request to the /logout endpoint.
+// The Go backend processes this by clearing the session data and redirecting the user back to the login page.
+
 func logout(w http.ResponseWriter, r *http.Request) {
 	// Destroy the session
-	session, _ := store.Get(r, "user-session")
-	session.Values["username"] = nil
+	session, _ := store.Get(r, "user-session")   // retrieves the current session using store.Get().
+	session.Values["username"] = nil     // Clears the session data by setting session.Values["username"] to nil
 	session.Save(r, w)
 
 	// Redirect the user to the login page after logout
-	http.Redirect(w, r, "/login", http.StatusSeeOther)
+	http.Redirect(w, r, "/login", http.StatusSeeOther)  // Redirects the user to the login page using http.Redirect.
 }
 
 //------------------------------------------------------------------
