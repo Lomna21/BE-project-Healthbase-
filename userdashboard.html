@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #e9ebeb;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .sidebar p {
+            font-size: 16px;
+            color: #777;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+            padding-left: 10px;
+            transition: padding-left 0.3s;
+        }
+
+        .sidebar .logout {
+            margin-top: 20px;
+            color: #d9534f;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+        }
+
+        .card {
+            background-color: #d4f1f4;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card .info {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .card .info p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+
+        .recent-activity {
+            margin-top: 20px;
+        }
+
+        .recent-activity h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        td {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>{{.Name}}</h2>
+        <p>Patient</p>
+        <a href="#">Dashboard</a>
+        <!-- <a href="#">Profile</a>
+        <a href="#">Appointments</a>
+        <a href="#">Medical Records</a>
+        <a href="#">Settings</a> -->
+        <a href="/appointments">Appointments</a>
+        <a href="/profile">Profile</a>
+        <a href="/medicalRecords">Medical Records</a>
+        <a href="/settings">Settings</a>
+        <!-- <a href="#" class="logout">Logout</a> -->
+        <a href="#" class="logout" onclick="logout()">Logout</a>
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <h1>Patient Dashboard</h1>
+            <div class="search-box">
+                <input type="text" placeholder="Search doctors or appointments...">
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="info">
+                <h3>Recent Doctor Visit</h3>
+                <p>Doctor: Dr. Harshit Kumar</p>
+                <p>Date: 27-09-2024</p>
+            </div>
+            <div>
+                <button>View Details</button>
+            </div>
+        </div>
+
+        <div class="recent-activity">
+            <h2>Recent Appointments</h2>
+            <table>
+                <tr>
+                    <th>Hospital</th>
+                    <th>Doctor's Name</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Remarks</th>
+                </tr>
+                <tr>
+                    <td>Hospital 1</td>
+                    <td>Dr. D1</td>
+                    <td>10:40 AM</td>
+                    <td>07-09-2024</td>
+                    <td>Diabetes</td>
+                </tr>
+                <tr>
+                    <td>Hospital 2</td>
+                    <td>Dr. D2</td>
+                    <td>10:10 AM</td>
+                    <td>02-09-2024</td>
+                    <td>Fever</td>
+                </tr>
+                <tr>
+                    <td>Hospital 2</td>
+                    <td>Dr. D3</td>
+                    <td>09:25 AM</td>
+                    <td>19-08-2024</td>
+                    <td>Shoulder pain</td>
+                </tr>
+                <tr>
+                    <td>Hospital 1</td>
+                    <td>Dr. D1</td>
+                    <td>09:00 AM</td>
+                    <td>07-08-2024</td>
+                    <td>Diabetes</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- -------------------------------------------------- -->
+    <script>
+      // Logout function
+      function logout() {
+          fetch('/logout', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              credentials: 'same-origin'  // Include cookies for session-based logout
+          })
+          .then(response => {
+              if (response.ok) {
+                  // Redirect to login page
+                  window.location.href = '/login';
+              } else {
+                  alert('Logout failed');
+              }
+          })
+          .catch(error => {
+              console.error('Error logging out:', error);
+              alert('Logout failed');
+          });
+      }
+  </script>
+  <!-- ---------------------------------------------------------- -->
+</body>
+</html>
