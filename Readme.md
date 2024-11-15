@@ -10,13 +10,13 @@ This innovative system leverages cloud computing technology, enabling healthcare
 ![Flow Chart](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-4-1.png)
 
 ## Technology Stack Used :
-![TechStack](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-8-1.pdf)
+![TechStack](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-8-1.png)
 
 ## Doctor Dashboard overview :
-![Doctor Dashboard](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-6-1.pdf)
+![Doctor Dashboard](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-6-1.png)
 
 ## Patient Dashboard overview :
-![Patient Dashboard](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-7-1.pdf)
+![Patient Dashboard](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-7-1.png)
 
 ## Future Scope
 • Al Integration: Al can help analyze large datasets to assist in diagnosis and treatment.
