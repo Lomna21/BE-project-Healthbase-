@@ -7,10 +7,10 @@ One critical challenge in this landscape is the effective management of patient 
 This innovative system leverages cloud computing technology, enabling healthcare providers to access patient records in real- time from any location with internet access. Advanced security features ensure that patient data remains protected from unauthorized access and breaches. Ultimately, this project aims to design and implement a reliable cloud-based solution that enhances the quality of care, improves patient outcomes, and reduces costs within the healthcare industry.
 
 ## Flow Chart :
-![Flow Chart](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-8.pdf)
+![Flow Chart](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-4.pdf)
 
 ## Technology Stack Used :
-![TechStack](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-4.pdf)
+![TechStack](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-8.pdf)
 
 ## Doctor Dashboard overview :
 ![Doctor Dashboard](https://github.com/Lomna21/BE-project-Healthbase-/blob/master/Images/BE%20project%20review-6.pdf)
