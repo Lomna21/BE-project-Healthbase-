@@ -4,7 +4,133 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor Dashboard</title>
-    <link rel="stylesheet" href="css-style/doctor-dashboard-style.css">
+    <!-- <link rel="stylesheet" href="E:/.vscode/BE Project/htmlpages/css-style/doctor-dashboard-style.css"> -->
+    <!-- <link rel="stylesheet" href="css-style/doctor-dashboard-style.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #f1f1f1;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .sidebar a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .sidebar a:hover {
+            background-color: #ddd;
+            padding-left: 10px;
+            transition: padding-left 0.3s;
+        }
+        
+        .sidebar .logout {
+            margin-top: 20px;
+            color: #d9534f;
+        }
+        
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #333;
+        }
+        
+        .search-box input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+        }
+        
+        .card {
+            background-color: #e0eaff;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .card .info {
+            flex: 1;
+            padding-left: 20px;
+        }
+        
+        .card .info p {
+            margin: 5px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .recent-activity {
+            margin-top: 20px;
+        }
+        
+        .recent-activity h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f5a623;
+            color: #fff;
+        }
+        
+        td {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -27,7 +153,8 @@
         <div class="header">
             <h1>Doctor Dashboard</h1>
             <div class="search-box">
-                <input type="text" placeholder="Search here...">
+                <input type="text" id="patient_id" placeholder="Enter Patient ID">
+                <button onclick="searchPatient()">Search</button>
             </div>
         </div>
 
@@ -40,9 +167,9 @@
                 <h3>21575</h3>
                 <p>Anmol Singh</p> -->
             </div>
-            <div>
-                <button>View</button>
-                <button>Add</button>
+            <div class="buttons">
+                <button class="view-button" onclick="viewPatient(21591)">View</button>
+                <button class="add-button">Add</button>
             </div>
         </div>
 
@@ -89,6 +216,19 @@
     </div>
     <!-- -------------------------------------------------- -->
     <script>
+        // Search Patient
+        function searchPatient() {
+            var patientID = document.getElementById("patient_id").value;
+            if (patientID.trim() === "") {
+                alert("Please enter a patient ID");
+                return;
+            }
+            window.location.href = "/search-patient?patient_id=" + patientID;
+        }
+
+        function viewPatient(id) {
+            window.location.href = "/search-patient?patient_id=" + id;
+        }
         // Logout function
         function logout() {
             fetch('/logout', {
