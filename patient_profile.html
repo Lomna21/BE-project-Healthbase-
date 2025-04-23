@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            text-align: center;
+        }
+        .profile-container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-details {
+            text-align: left;
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .view-button {
+            background-color: #007bff;
+            color: white;
+        }
+        .add-button {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <img src="{{.ProfileImg}}" class="profile-image" alt="Patient Image">
+        <div class="profile-details">
+            <p><strong>ID:</strong> {{.ID}}</p>
+            <p><strong>Name:</strong> {{.Name}}</p>
+            <p><strong>Email:</strong> {{.Email}}</p>
+            <p><strong>Date of Birth:</strong> {{.DOB}}</p>
+        </div>
+
+        <div class="buttons">
+            <a href="/view-history?patient_id={{.ID}}" class="button view-button">View History</a>
+            <a href="/add-prescription?patient_id={{.ID}}" class="button add-button">Add Prescription</a>
+        </div>
+        
+    </div>
+</body>
+</html>

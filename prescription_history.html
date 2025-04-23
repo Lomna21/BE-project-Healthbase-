@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            padding: 40px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .record {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .record:last-child {
+            border-bottom: none;
+        }
+        .timestamp {
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Recent Prescription History</h2>
+        {{range .}}
+        <div class="record">
+            <p><strong>Doctor ID:</strong> {{.DoctorID}}</p>
+            <p><strong>Prescription:</strong> {{.Prescription}}</p>
+            <p class="timestamp">Date: {{.DateTime}}</p>
+        </div>
+        {{else}}
+        <p>No prescription history found.</p>
+        {{end}}
+    </div>
+</body>
+</html>
